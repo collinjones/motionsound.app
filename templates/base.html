@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'style.css' %} ">
+
+        
+        <!-- p5.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/addons/p5.sound.js" integrity="sha512-TU9AWtV5uUZPX8dbBAH8NQF1tSdigPRRT82vllAQ1Ke28puiqLA6ZVKxtUGlgrH6yWFnkKy+sE6luNEGH9ar0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
+
+        <!-- Other dependancies -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.js" integrity="sha512-kTA5As3DFbe7Gz6vIpsyaWjX9WSEKeyGigJkmzlQDIUVlPV5ceFxKHG+CAXvbxQvd8iVWJ6nS5egDw1WCss4Sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/webmidi@next/dist/iife/webmidi.iife.js"></script>
+        
+        <title> Motion Sound Sequencer | Physics-based MIDI Sequencer </title>
+
+    </head>
+
+    <body>
+
+        <h1> Motion Sound Sequencer </h1>
+        <script src="{% static 'boundary.js' %} "></script>
+        <script src="{% static 'circle.js' %} "></script>
+        <script src="{% static 'emitter.js' %} "></script>
+        <script src="{% static 'midi.js' %} "></script>
+        <script src="{% static 'MIDIFactory.js' %} "></script>
+        <script src="{% static 'mouse.js' %} "></script>
+        <script src="{% static 'screenBoundary.js' %} "></script>
+        <script src="{% static 'timedTrigger.js' %} "></script>
+        <script src="{% static 'simulation.js' %} "></script>
+        <script src="{% static 'sketch.js' %} "></script> 
+    </body>
+
+</html>
