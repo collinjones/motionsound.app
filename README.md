@@ -1,2 +1,2 @@
-# MOMU Sequencer 
+# Motion Sound Sequencer 
 ---
