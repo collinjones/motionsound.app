@@ -15,11 +15,11 @@ var drawing_rect = false;
 var paused = false;
 
 function windowResized() {
-    resizeCanvas(windowWidth - 20, 800);
+    resizeCanvas(windowWidth - 100, 800);
 }
 
 function setup() {
-    canvas = createCanvas(windowWidth - 20, 800);
+    canvas = createCanvas(windowWidth - 100, 800);
     rectMode(CENTER)
     simulation = new Simulation(canvas);
 }
@@ -89,7 +89,7 @@ function mouseDragged() {
 
 function mouseReleased() {
     if (start_vector_set) {
-        simulation.createBoundary(
+        simulation.createPlatform(
             startMouseVector, angle, distance * 2, simulation.checkbox_static.checked()
         );
         start_vector_set = false;

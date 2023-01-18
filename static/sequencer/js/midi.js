@@ -29,9 +29,10 @@ MIDI_Message.NOTE_OFF = 128;
 
 class MIDIOutput {
     
-    constructor() {
-        this.MIDIOut = null;          // MIDI output device
-        this.MIDIOut_selector = null; // html dropdown selector
+    constructor(simulation) {
+        this.simulation = simulation
+        this.MIDIOut = WebMidi.outputs[0];          // MIDI output device
+        this.MIDIOutList = [];
 
         // request MIDI access
         if (navigator.requestMIDIAccess) {
@@ -41,29 +42,13 @@ class MIDIOutput {
         }
     }
 
-    setup (pos) {
-        /* Create and position selector */
-        this.MIDIOut_selector = createSelect();
-        this.MIDIOut_selector.changed(this.changeMIDIOut.bind(this));
-        this.MIDIOut_selector.position(pos.x, pos.y);
-        this.MIDIOut_selector.id('midi-out-dropdown')
-
-        /* Populating dropdown list */
-        for (let i = 0; i < WebMidi.outputs.length; i++) {
-            this.MIDIOut_selector.option(WebMidi.outputs[i].name)
-        }
-        this.MIDIOut = WebMidi.getOutputByName(this.MIDIOut_selector.value());
-    }
-
     playNote(note) {
         this.MIDIOut.playNote(note, {attack: 1, duration: 100});
     }
 
     changeMIDIOut() {
-        let val = this.MIDIOut_selector.value();
-        this.MIDIOut = WebMidi.getOutputByName(val);
+        this.MIDIOut = WebMidi.getOutputByName(this.simulation.gui.gui.getValue("MIDI Output Device"));
     }
- 
 }
 
 class MIDIInput {
@@ -72,6 +57,7 @@ class MIDIInput {
         this.simulation = simulation;
         this.MIDIIn = null;
         this.MIDIIn_selector = null;
+        this.MIDIInList = [];
 
         // request MIDI access
         if (navigator.requestMIDIAccess) {
@@ -82,25 +68,8 @@ class MIDIInput {
         }
     }
 
-    setup(pos) {
-        this.MIDIIn_selector = createSelect();
-        this.MIDIIn_selector.changed(this.changeMIDIIn.bind(this));
-        this.MIDIIn_selector.position(pos.x, pos.y);
-        this.MIDIIn_selector.id('midi-in-dropdown')
-
-        /* Populating dropdown list */
-        for (let i = 0; i < WebMidi.inputs.length; i++) {
-            this.MIDIIn_selector.option(WebMidi.inputs[i].name);
-        }
-        this.MIDIIn = WebMidi.getInputByName(this.MIDIIn_selector.value());
-        console.log(this.MIDIIn)
-
-        this.MIDIIn.addListener("noteon", this.noteOn.bind(this));
-    }
-
     /* Returns the note played */
     noteOn(e) {
-        console.log(e)
         this.simulation.createCircle(createVector(mouseX, mouseY), e.note.identifier);
     }
 

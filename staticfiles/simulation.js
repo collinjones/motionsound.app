@@ -191,7 +191,7 @@ class Simulation {
         for (let y = 0; y < this.height_div; y++) {
             this.boundaries[y] = [];
             for (let x = 0; x < this.width_div; x++) {
-                this.boundaries[y].push(new Boundary(this,           // sim
+                this.boundaries[y].push(new Platform(this,           // sim
                     (x * this.screen_div) + this.screen_div / 2,     // x pos
                     (y * this.screen_div) + this.screen_div / 2,     // y pos
                     this.screen_div,                                 // width
@@ -249,8 +249,8 @@ class Simulation {
         this.emitters.push(new Emitter(this, createVector(mouseX, mouseY)));
     }
 
-    createBoundary(pos, angle, size, isStatic) {
-        this.boundaries.push(new Boundary(this, pos.x, pos.y, size, 10,                  
+    createPlatform(pos, angle, size, isStatic) {
+        this.boundaries.push(new Platform(this, pos.x, pos.y, size, 10,                  
             angle, 0, color(255, 204, 0), isStatic));                           
     }
 

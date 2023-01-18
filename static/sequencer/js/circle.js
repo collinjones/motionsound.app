@@ -91,6 +91,7 @@ class Circle {
         return sqrt(pow(this.vel.x, 2) + pow(this.vel.y, 2))
     }
 
+    /* Checks if circle has left window bounds */
     checkIfOutsideBounds() {
         if (this.body.position.x < 0 || this.body.position.x > width ||
             this.body.position.y < 0 || this.body.position.y > height) {
@@ -99,6 +100,7 @@ class Circle {
         return false;
     }
 
+    /* Sets the color of the circle depending on the note */
     _setColor() {
         let note_sliced = this.MIDI_note.slice(0, -1);
 

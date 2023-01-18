@@ -67,7 +67,6 @@ class MIDIFactory {
             floor(this.currentNoteNumbers.length / 7), 
             floor(this.currentNoteNumbers.length / 7) + 7
         )
-        console.log(this.currentNoteNumbers)
         this.MIDIToName();
     }
 
@@ -83,8 +82,6 @@ class MIDIFactory {
             }
             this.currentNoteNames.push(notes[noteInOctave] + octave)
         }
-        // this.currentNoteNames = this.currentNoteNames.slice(1, 
-        //     this.currentNoteNumbers.length - 25)
     }
 
     setNewMode(newMode) {

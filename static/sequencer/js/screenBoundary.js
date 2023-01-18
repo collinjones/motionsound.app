@@ -4,7 +4,7 @@ class ScreenBoundary {
         this.rects = []
 
         // Top Edge
-        this.rects.push(new Boundary(
+        this.rects.push(new Platform(
             this.simulation, 
             width/2, 
             0, 
@@ -17,17 +17,17 @@ class ScreenBoundary {
         ));
 
         // Right Edge
-        this.rects.push(new Boundary(
+        this.rects.push(new Platform(
             this.simulation, width, height/2, thickness, height, 0, 0, color, true
         ));
 
         // Bottom Edge
-        this.rects.push(new Boundary(
+        this.rects.push(new Platform(
             this.simulation, width/2, height, width, thickness, 0, 0, color, true
         ));
 
         // Left Edge
-        this.rects.push(new Boundary(
+        this.rects.push(new Platform(
             this.simulation, 0, height/2, thickness, height, 0, 0, color, true
         ));
     }

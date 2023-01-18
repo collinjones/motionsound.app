@@ -1,12 +1,13 @@
 class Emitter {
-    constructor(simulation, pos) {
+    constructor(simulation, pos, size, delay) {
         this.simulation = simulation;
         this.pos = pos;
         this.max_particles = 1;
         this.particles = [];
-        this.trigger = new TimedTrigger(1);
+        this.trigger = new TimedTrigger(delay);
         this.text = null;
         this.mode = null;
+        this.size = size
     }
 
     setMode(mode) {
@@ -17,8 +18,7 @@ class Emitter {
         if(this.trigger.canExecute()) {
             if (this.particles.length < this.max_particles) {
                 let note = this.simulation.MIDIFactory.generateRandomNoteName();
-                console.log(note)
-                this.simulation.circles.push(new Circle(this.simulation, this.pos.x, this.pos.y, 5, note, 0, 0.8))
+                this.simulation.circles.push(new Circle(this.simulation, this.pos.x, this.pos.y, this.size, note, 0, 0.8))
             }
         }
     }
@@ -28,8 +28,8 @@ class Emitter {
         translate(this.pos.x, this.pos.y);
         noFill();
         stroke(0, 0, 0, 100)
-        ellipse(0, 0, 10, 10);
-        text(str(this.trigger.getTimeUntilExecution()), 10, 10)
+        ellipse(0, 0, this.size * 2, this.size * 2);
+        text(str((this.trigger.getTimeUntilExecution() / 1000).toFixed(1)), this.size + 5, this.size)
         pop();
     }
     

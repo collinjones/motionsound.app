@@ -45,7 +45,7 @@ class Mouse {
                 /* Find hovering bodies again */
                 foundPhysics = Matter.Query.point(Composite.allBodies(simulation.world), event.mouse.position);
                 if (!foundPhysics[0] && target) {
-                    console.log('nice')
+                    console.log('')
                 } 
             }
         });
